@@ -10,6 +10,7 @@ import { Button } from './components/ui/Button';
 import { ToastContainer } from './components/ui/Toast';
 import { useQueue } from './hooks/useQueue';
 import { saveGenerationsToStorage, loadGenerationsFromStorage } from './lib/storage';
+import '@/lib/debugUtils'; // Import debug utilities (exposes window functions)
 import type {
   GenerationMode,
   GenerationSettings,
