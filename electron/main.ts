@@ -1,8 +1,9 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, shell } from 'electron';
 import path from 'path';
+import electronSquirrelStartup from 'electron-squirrel-startup';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling
-if (require('electron-squirrel-startup')) {
+if (electronSquirrelStartup) {
   app.quit();
 }
 
@@ -56,7 +57,7 @@ function createWindow() {
   mainWindow.webContents.setWindowOpenHandler(({ url }) => {
     // Open external links in default browser
     if (url.startsWith('http://') || url.startsWith('https://')) {
-      require('electron').shell.openExternal(url);
+      shell.openExternal(url);
     }
     return { action: 'deny' };
   });
