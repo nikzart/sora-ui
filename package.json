@@ -3,7 +3,7 @@
   "productName": "Sora Video Generation",
   "description": "AI-powered video generation with Azure OpenAI Sora",
   "private": true,
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "main": "dist-electron/main.js",
   "author": "nikzart",
