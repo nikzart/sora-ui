@@ -41,7 +41,3 @@ release
 *.AppImage
 *.deb
 *.rpm
-build/*.ico
-build/*.icns
-build/*.png
-!build/README.md
