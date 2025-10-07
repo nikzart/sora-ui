@@ -1,6 +1,11 @@
 import { app, BrowserWindow, shell } from 'electron';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import electronSquirrelStartup from 'electron-squirrel-startup';
+
+// ES module compatibility - __dirname not available by default
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling
 if (electronSquirrelStartup) {
