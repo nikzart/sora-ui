@@ -4,6 +4,43 @@ This guide explains how to create a new release with automated builds for Window
 
 ---
 
+## ⚙️ One-Time Setup: GitHub Secrets
+
+**IMPORTANT:** Before creating your first release, you must configure GitHub Secrets with your Azure API credentials.
+
+### Setting Up Secrets
+
+1. **Go to your GitHub repository**
+2. **Click Settings → Secrets and variables → Actions**
+3. **Click "New repository secret" and add each of these:**
+
+   | Secret Name | Value (from your `.env` file) |
+   |------------|-------------------------------|
+   | `VITE_AZURE_ENDPOINT` | Your Azure endpoint URL |
+   | `VITE_AZURE_API_KEY` | Your Azure API key |
+   | `VITE_API_VERSION` | `preview` |
+   | `VITE_O4_MINI_ENDPOINT` | Your o4-mini endpoint URL |
+   | `VITE_O4_MINI_DEPLOYMENT` | `o4-mini` |
+   | `VITE_O4_MINI_API_VERSION` | `2024-12-01-preview` |
+
+4. **Click "Add secret" for each one**
+
+### Example format (use your actual values from `.env`):
+
+```env
+# Copy these values to GitHub Secrets (replace with your actual credentials)
+VITE_AZURE_ENDPOINT=https://your-resource.cognitiveservices.azure.com
+VITE_AZURE_API_KEY=your_actual_azure_api_key_here
+VITE_API_VERSION=preview
+VITE_O4_MINI_ENDPOINT=https://your-resource.cognitiveservices.azure.com/
+VITE_O4_MINI_DEPLOYMENT=o4-mini
+VITE_O4_MINI_API_VERSION=2024-12-01-preview
+```
+
+**Why?** GitHub Actions doesn't have access to your local `.env` file. The workflow will create a `.env` file during build using these secrets.
+
+---
+
 ## 🚀 Quick Release Process
 
 ### 1. Prepare the Release
@@ -112,9 +149,11 @@ Examples:
    - Actions tab → Failed workflow → Click on job → View logs
 
 2. **Common issues:**
+   - **Missing GitHub Secrets**: Most common! Verify all 6 secrets are configured (see "One-Time Setup" above)
    - Missing dependencies: Check `package.json`
    - TypeScript errors: Run `npm run build` locally
    - Icon missing: Check `build/` directory
+   - Environment variables undefined: Check GitHub Secrets are named exactly as shown (case-sensitive)
 
 3. **Fix and re-tag:**
    ```bash
@@ -162,6 +201,10 @@ Examples:
 
 ## 📊 Release Checklist
 
+### First Release Only:
+- [ ] Configure GitHub Secrets (see "One-Time Setup" above)
+
+### Every Release:
 - [ ] Update version in `package.json`
 - [ ] Test build locally
 - [ ] Update CHANGELOG.md (if exists)
