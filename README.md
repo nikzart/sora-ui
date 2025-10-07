@@ -1,6 +1,28 @@
 # Sora Video Generation UI
 
-A beautiful, fully-featured web interface for Azure OpenAI's Sora video generation model. Built with React, TypeScript, and Tailwind CSS.
+A beautiful, fully-featured interface for Azure OpenAI's Sora video generation model. Built with React, TypeScript, and Tailwind CSS.
+
+**Available as:**
+- 🌐 **Web Application** - Run in any modern browser
+- 💻 **Desktop App (Electron)** - Standalone app for Windows, macOS, and Linux
+
+---
+
+## 📥 Download Desktop App
+
+**Latest Release:** [Download from GitHub Releases](https://github.com/nikzart/sora-ui/releases)
+
+### Quick Install
+
+- **Windows:** Download `.exe` installer or portable `.zip`
+- **macOS:** Download `.dmg` file
+- **Linux:** Download `.AppImage` file
+
+📖 **[Full Installation Guide →](./INSTALL.md)**
+
+For developers: See [ELECTRON.md](./ELECTRON.md) for building from source.
+
+---
 
 ## Features
 
@@ -36,15 +58,25 @@ A beautiful, fully-featured web interface for Azure OpenAI's Sora video generati
 
 ## Getting Started
 
-### Prerequisites
+### For End Users
+
+**Download the desktop app:** [Installation Guide](./INSTALL.md)
+
+No development setup needed - just download and run!
+
+---
+
+### For Developers
+
+#### Prerequisites
 - Node.js 16+
 - npm or yarn
 
-### Installation
+#### Web App Development
 
 1. Clone the repository:
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/nikzart/sora-ui.git
 cd sora-ui
 ```
 
@@ -53,14 +85,38 @@ cd sora-ui
 npm install
 ```
 
-3. Start the development server:
+3. Create `.env` file with your API credentials:
+```env
+VITE_AZURE_ENDPOINT=https://your-endpoint.cognitiveservices.azure.com
+VITE_AZURE_API_KEY=your_api_key_here
+VITE_API_VERSION=preview
+```
+
+4. Start the development server:
 ```bash
 npm run dev
 ```
 
-4. Open http://localhost:5173 in your browser
+5. Open http://localhost:5173 in your browser
 
-### Build for Production
+#### Electron App Development
+
+```bash
+# Run Electron app in development mode
+npm run electron:dev
+
+# Build for your current platform
+npm run electron:build
+
+# Build for specific platforms
+npm run electron:build:win    # Windows
+npm run electron:build:mac    # macOS
+npm run electron:build:linux  # Linux
+```
+
+See [ELECTRON.md](./ELECTRON.md) for detailed Electron development guide.
+
+#### Build for Production (Web)
 
 ```bash
 npm run build

@@ -32,3 +32,16 @@ dist-ssr
 public/generated
 output.mp4
 CLAUDE.md
+
+# Electron build artifacts
+dist-electron
+release
+*.exe
+*.dmg
+*.AppImage
+*.deb
+*.rpm
+build/*.ico
+build/*.icns
+build/*.png
+!build/README.md
