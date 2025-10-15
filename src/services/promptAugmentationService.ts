@@ -33,7 +33,7 @@ Guidelines for enhancement:
 4. Add temporal transitions (how the scene evolves)
 5. Include artistic style references when appropriate (cinematic, documentary, artistic, etc.)
 6. Keep the core concept from the original prompt
-7. Stay within 500 characters maximum
+7. Stay within 2000 characters maximum
 8. Be specific about motion and dynamics
 9. Use vivid, descriptive language
 10. Consider composition and framing
@@ -77,9 +77,9 @@ export async function augmentPrompt(prompt: string): Promise<string> {
       throw new ApiError('Empty response from prompt augmentation service', 500);
     }
 
-    // Enforce 500 character limit for Sora API
-    if (augmentedPrompt.length > 500) {
-      return augmentedPrompt.substring(0, 497) + '...';
+    // Enforce 2000 character limit for Sora API
+    if (augmentedPrompt.length > 2000) {
+      return augmentedPrompt.substring(0, 1997) + '...';
     }
 
     return augmentedPrompt;

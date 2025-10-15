@@ -14,7 +14,7 @@ interface PromptInputProps {
 }
 
 export function PromptInput({ value, onChange, onGenerate, isGenerating }: PromptInputProps) {
-  const maxLength = 500;
+  const maxLength = 2000;
   const characterCount = value.length;
 
   // Augmentation state
